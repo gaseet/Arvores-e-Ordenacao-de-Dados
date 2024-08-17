@@ -67,11 +67,12 @@ public class ABB {
                     System.out.println("Valor já presente.");
                     return;
                 } else if (result < 0) {
+                    temp2 = temp1;
                     temp1 = temp1.getEsq();
                 } else {
+                    temp2 = temp1;
                     temp1 = temp1.getDir();
                 }
-                temp2 = temp1;
             } while (temp1 != null);
 
             if (result < 0) {
