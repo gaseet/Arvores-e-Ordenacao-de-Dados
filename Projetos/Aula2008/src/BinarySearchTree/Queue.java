@@ -22,7 +22,6 @@ public class Queue {
         QueueNode newNode = new QueueNode(treeNode);
 
         if (this.isEmpty() == true) {
-            newNode.setProx(null);
             this.first = newNode;
             this.last = newNode;
         } else {
