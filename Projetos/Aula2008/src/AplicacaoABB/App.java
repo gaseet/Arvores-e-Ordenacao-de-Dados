@@ -1,6 +1,7 @@
 package AplicacaoABB;
-import BinarySearchTree.ABB;
 import java.util.Scanner;
+
+import BinarySearchTree.ABB;
 
 public class App {
     public static void main (String[] args) {
