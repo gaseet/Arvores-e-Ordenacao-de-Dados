@@ -1,8 +1,5 @@
 package BinarySearchTree;
 
-import java.util.Queue;
-import java.util.LinkedList;
-
 public class ABB {
     private ABBNode raiz;
 
@@ -223,20 +220,19 @@ public class ABB {
     }
 
     public void passeioPorNivel() {
-        Queue<ABBNode> fila;
+        Queue fila = new Queue();
         ABBNode aux;
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia");
         } else {
-            fila = new LinkedList<>();
-            fila.add(raiz);
+            fila.enqueue(raiz);
             while(fila.isEmpty() == false) {
-                aux = fila.remove();
+                aux = fila.dequeue();
                 if (aux.getLeft() != null) {
-                    fila.add(aux.getLeft());
+                    fila.enqueue(aux.getLeft());
                 }
                 if (aux.getRight() != null) {
-                    fila.add(aux.getRight());
+                    fila.enqueue(aux.getRight());
                 }
                 System.out.println(aux.getInfo());
             }

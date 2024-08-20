@@ -4,6 +4,12 @@ public class Queue {
     private QueueNode first;
     private QueueNode last;
 
+
+    public Queue() {
+        this.first = null;
+        this.last = null;
+    }
+
     public boolean isEmpty() {
         if (this.first == null && this.last == null) {
             return true;
@@ -25,7 +31,7 @@ public class Queue {
         }
     }
 
-    public QueueNode dequeue(ABBNode treeNode) {
+    public ABBNode dequeue() {
         QueueNode aux;
         if(this.isEmpty() == true) {
             return null;
@@ -35,7 +41,7 @@ public class Queue {
             if (this.first == null) {
                 this.last = null;
             }
-            return aux;
+            return aux.getInfo();
         }
     }
 }
