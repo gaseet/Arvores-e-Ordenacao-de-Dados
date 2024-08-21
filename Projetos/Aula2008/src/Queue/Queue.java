@@ -1,8 +1,8 @@
-package BinarySearchTree;
+package Queue;
 
-public class Queue {
-    private QueueNode first;
-    private QueueNode last;
+public class Queue<T> {
+    private QueueNode<T> first;
+    private QueueNode<T> last;
 
 
     public Queue() {
@@ -18,8 +18,8 @@ public class Queue {
         }
     }
 
-    public void enqueue(ABBNode treeNode) {
-        QueueNode newNode = new QueueNode(treeNode);
+    public void enqueue(T item) {
+        QueueNode<T> newNode = new QueueNode<T>(item);
 
         if (this.isEmpty() == true) {
             this.first = newNode;
@@ -30,8 +30,8 @@ public class Queue {
         }
     }
 
-    public ABBNode dequeue() {
-        QueueNode aux;
+    public T dequeue() {
+        QueueNode<T> aux;
         if(this.isEmpty() == true) {
             return null;
         } else {

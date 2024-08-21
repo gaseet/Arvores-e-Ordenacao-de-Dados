@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import Queue.Queue;
+
 public class ABB {
     private ABBNode raiz;
 
@@ -220,7 +222,7 @@ public class ABB {
     }
 
     public void passeioPorNivel() {
-        Queue fila = new Queue();
+        Queue<ABBNode> fila = new Queue<ABBNode>();
         ABBNode aux;
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia");
