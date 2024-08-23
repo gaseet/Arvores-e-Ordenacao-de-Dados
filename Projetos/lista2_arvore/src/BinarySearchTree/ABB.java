@@ -270,19 +270,56 @@ public class ABB {
             System.out.println("Árvore vazia.");
         } else {
             pilha = new Stack<ABBNode>();
-            pilha.push(this.root);
-            while(pilha.isEmpty() == false) {
+            aux = this.root;
+            while(pilha.isEmpty() == false || aux != null) {
+                while(aux != null) {
+                    System.out.println(aux.getInfo());
+                    pilha.push(aux);
+                    aux = aux.getLeft();
+                }
                 aux = pilha.pop();
-                System.out.println(aux.getInfo());
-
-                if (aux.getRight() != null) {
-                    pilha.push(aux.getRight());
-                }
-
-                if (aux.getLeft() != null) {
-                    pilha.push(aux.getLeft());
-                }
+                aux = aux.getRight();
             }
         }
+    }
+
+    public int contarNaoRecursiva() {
+        Stack<ABBNode> pilha;
+        ABBNode aux;
+        int cont = 0;
+        if (this.isEmpty() == true) {
+            System.out.println("Árvore vazia.");
+        } else {
+            pilha = new Stack<ABBNode>();
+            aux = this.root;
+            while(pilha.isEmpty() == false || aux != null) {
+                while(aux != null) {
+                    cont++;
+                    pilha.push(aux);
+                    aux = aux.getLeft();
+                }
+                aux = pilha.pop();
+                aux = aux.getRight();
+            }
+        }
+        return cont;
+    }
+
+    public int contarRecursiva() {
+        if (this.isEmpty() == true) {
+            return 0;
+        } else {
+            int cont = 0;
+            cont = this.percorrerContando(root);
+            return cont;
+        }
+    }
+
+    private int percorrerContando(ABBNode r) {
+        if (r == null) {
+            return 0;
+        }
+        // Conta o nó atual + nós à esquerda + nós à direita
+        return 1 + percorrerContando(r.getLeft()) + percorrerContando(r.getRight());
     }
 }

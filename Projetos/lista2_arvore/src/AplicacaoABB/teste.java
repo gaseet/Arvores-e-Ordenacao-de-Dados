@@ -14,12 +14,9 @@ public class teste {
         arvore.insert2temp(0);
         arvore.insert2temp(-1);
 
-        arvore.exibirMaiorValor();
-        arvore.exibirMenorValor();
-
         System.out.println("-");
-        arvore.emOrdem();
+        System.out.println(arvore.contarNaoRecursiva());
         System.out.println("-");
-        arvore.emOrdemNaoRecursivo();
+        System.out.println(arvore.contarRecursiva());
     }
 }
