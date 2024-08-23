@@ -1,12 +1,13 @@
 package BinarySearchTree;
 
-import Queue.Queue;
+import TADQueue.Queue;
+import TADStack.Stack;
 
 public class ABB {
-    private ABBNode raiz;
+    private ABBNode root;
 
     public boolean isEmpty() {
-        if (this.raiz == null) {
+        if (this.root == null) {
             return true;
         } else {
             return false;
@@ -23,9 +24,9 @@ public class ABB {
         int result;
 
         if (this.isEmpty() == true) {
-            this.raiz = novo;
+            this.root = novo;
         } else {
-            aux = this.raiz;
+            aux = this.root;
             while (true) {
                 result = value.compareTo(aux.getInfo());
                 if (result == 0) {
@@ -60,9 +61,9 @@ public class ABB {
         int result;
 
         if (this.isEmpty() == true) {
-            this.raiz = novo;
+            this.root = novo;
         } else {
-            temp1 = this.raiz;
+            temp1 = this.root;
             do {
                 result = value.compareTo(temp1.getInfo());
                 if (result == 0) {
@@ -93,7 +94,7 @@ public class ABB {
         if (this.isEmpty() == true) {
             return null;
         } else {
-            aux = this.raiz;
+            aux = this.root;
             while (true) {
                 result = value.compareTo(aux.getInfo());
                 if (result == 0) {
@@ -125,7 +126,7 @@ public class ABB {
 
     private ABBNode menorValorEndereco() {
         ABBNode aux;
-        aux = this.raiz;
+        aux = this.root;
 
         if (this.isEmpty() == true) {
             return null;
@@ -139,7 +140,7 @@ public class ABB {
 
     private ABBNode maiorValorEndereco() {
         ABBNode aux;
-        aux = this.raiz;
+        aux = this.root;
 
         if (this.isEmpty() == true) {
             return null;
@@ -177,7 +178,7 @@ public class ABB {
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia.");
         } else {
-            this.percorrerEmOrdem(raiz);
+            this.percorrerEmOrdem(root);
         }
     }
 
@@ -193,7 +194,7 @@ public class ABB {
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia.");
         } else {
-            this.percorrerPreOrdem(raiz);
+            this.percorrerPreOrdem(root);
         }
     }
 
@@ -209,7 +210,7 @@ public class ABB {
         if (this.isEmpty() == true) {
             System.out.println("Árvore vazia.");
         } else {
-            this.percorrerPosOrdem(raiz);
+            this.percorrerPosOrdem(root);
         }
     }
 
@@ -222,12 +223,13 @@ public class ABB {
     }
 
     public void passeioPorNivel() {
-        Queue<ABBNode> fila = new Queue<ABBNode>();
+        Queue<ABBNode> fila;
         ABBNode aux;
         if (this.isEmpty() == true) {
-            System.out.println("Árvore vazia");
+            System.out.println("Árvore vazia.");
         } else {
-            fila.enqueue(raiz);
+            fila = new Queue<ABBNode>();
+            fila.enqueue(root);
             while(fila.isEmpty() == false) {
                 aux = fila.dequeue();
                 if (aux.getLeft() != null) {
@@ -237,6 +239,49 @@ public class ABB {
                     fila.enqueue(aux.getRight());
                 }
                 System.out.println(aux.getInfo());
+            }
+        }
+    }
+
+    public void emOrdemNaoRecursivo() {
+        Stack<ABBNode> pilha;
+        ABBNode aux;
+        if (this.isEmpty() == true) {
+            System.out.println("Árvore vazia.");
+        } else {
+            pilha = new Stack<ABBNode>();
+            aux = this.root;
+            while(pilha.isEmpty() == false || aux != null) {
+                while(aux != null) {
+                    pilha.push(aux);
+                    aux = aux.getLeft();
+                }
+                aux = pilha.pop();
+                System.out.println(aux.getInfo());
+                aux = aux.getRight();
+            }
+        }
+    }
+
+    public void preOrdemNaoRecursivo() {
+        Stack<ABBNode> pilha;
+        ABBNode aux;
+        if (this.isEmpty() == true) {
+            System.out.println("Árvore vazia.");
+        } else {
+            pilha = new Stack<ABBNode>();
+            pilha.push(this.root);
+            while(pilha.isEmpty() == false) {
+                aux = pilha.pop();
+                System.out.println(aux.getInfo());
+
+                if (aux.getRight() != null) {
+                    pilha.push(aux.getRight());
+                }
+
+                if (aux.getLeft() != null) {
+                    pilha.push(aux.getLeft());
+                }
             }
         }
     }

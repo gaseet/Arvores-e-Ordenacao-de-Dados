@@ -1,4 +1,4 @@
-package Queue;
+package TADQueue;
 
 public class Queue<T> {
     private QueueNode<T> first;
@@ -18,6 +18,14 @@ public class Queue<T> {
         }
     }
 
+    public boolean isFull() {
+        return false;
+    }
+
+    public T head() {
+        return this.first.getInfo();
+    }
+
     public void enqueue(T item) {
         QueueNode<T> newNode = new QueueNode<T>(item);
 
@@ -31,16 +39,11 @@ public class Queue<T> {
     }
 
     public T dequeue() {
-        QueueNode<T> aux;
-        if(this.isEmpty() == true) {
-            return null;
-        } else {
-            aux = this.first;
-            this.first = this.first.getProx();
-            if (this.first == null) {
-                this.last = null;
-            }
-            return aux.getInfo();
+        QueueNode<T> aux = this.first;
+        this.first = aux.getProx();
+        if (this.first == null) {
+            this.last = null;
         }
+        return aux.getInfo();
     }
 }

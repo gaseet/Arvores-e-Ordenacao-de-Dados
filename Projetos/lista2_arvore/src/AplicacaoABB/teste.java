@@ -20,10 +20,6 @@ public class teste {
         System.out.println("-");
         arvore.emOrdem();
         System.out.println("-");
-        arvore.preOrdem();
-        System.out.println("-");
-        arvore.posOrdem();
-        System.out.println("-");
-        arvore.passeioPorNivel();
+        arvore.emOrdemNaoRecursivo();
     }
 }
