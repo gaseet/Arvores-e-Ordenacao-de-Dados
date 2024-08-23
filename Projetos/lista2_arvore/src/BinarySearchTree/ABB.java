@@ -288,7 +288,7 @@ public class ABB {
         ABBNode aux;
         int cont = 0;
         if (this.isEmpty() == true) {
-            System.out.println("Árvore vazia.");
+            return 0;
         } else {
             pilha = new Stack<ABBNode>();
             aux = this.root;
@@ -301,8 +301,8 @@ public class ABB {
                 aux = pilha.pop();
                 aux = aux.getRight();
             }
+            return cont;
         }
-        return cont;
     }
 
     public int contarRecursiva() {
@@ -321,5 +321,99 @@ public class ABB {
         }
         // Conta o nó atual + nós à esquerda + nós à direita
         return 1 + percorrerContando(r.getLeft()) + percorrerContando(r.getRight());
+    }
+
+    public int contarFolhasNaoRecursiva() {
+        Stack<ABBNode> pilha;
+        ABBNode aux;
+        int cont = 0;
+        if (this.isEmpty() == true) {
+            return 0;
+        } else {
+            pilha = new Stack<ABBNode>();
+            aux = this.root;
+            while(pilha.isEmpty() == false || aux != null) {
+                while(aux != null) {
+                    if (aux.getLeft() == null && aux.getRight() == null) {
+                        cont++;
+                    }
+                    pilha.push(aux);
+                    aux = aux.getLeft();
+                }
+                aux = pilha.pop();
+                aux = aux.getRight();
+            }
+            return cont;
+        }
+    }
+
+    public int contarFolhasRecursiva() {
+        if (this.isEmpty() == true) {
+            return 0;
+        } else {
+            int cont = 0;
+            cont = this.percorrerContandoFolhas(root);
+            return cont;
+        }
+    }
+
+    private int percorrerContandoFolhas(ABBNode r) {
+        if (r == null) {
+            return 0;
+        }
+        if (r.getLeft() == null && r.getRight() == null) {
+            return 1;
+        }
+        int folhasEsquerda = percorrerContandoFolhas(r.getLeft());
+        int folhasDireita = percorrerContandoFolhas(r.getRight());
+
+        return folhasEsquerda + folhasDireita;
+    }
+
+    public int contarNaoTerminaisNaoRecursiva() {
+        Stack<ABBNode> pilha;
+        ABBNode aux;
+        int cont = 0;
+        if (this.isEmpty() == true) {
+            return 0;
+        } else {
+            pilha = new Stack<ABBNode>();
+            aux = this.root;
+            while(pilha.isEmpty() == false || aux != null) {
+                while(aux != null) {
+                    if (aux.getLeft() != null || aux.getRight() != null) {
+                        cont++;
+                    }
+                    pilha.push(aux);
+                    aux = aux.getLeft();
+                }
+                aux = pilha.pop();
+                aux = aux.getRight();
+            }
+            return cont;
+        }
+    }
+
+    public int contarNaoTerminaisRecursiva() {
+        if (this.isEmpty() == true) {
+            return 0;
+        } else {
+            int cont = 0;
+            cont = this.percorrerContandoNaoTerminais(root);
+            return cont;
+        }
+    }
+
+    private int percorrerContandoNaoTerminais(ABBNode r) {
+        if (r == null) {
+            return 0;
+        }
+        int aux = percorrerContandoNaoTerminais(r.getLeft()) + percorrerContandoNaoTerminais(r.getRight());
+
+        if (r.getLeft() != null || r.getRight() != null) {
+            return 1 + aux;
+        } else {
+            return 0;
+        }
     }
 }
