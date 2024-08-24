@@ -68,7 +68,7 @@ public class Cadastro {
             System.out.println("Código: " + produto.getCodigo());
             System.out.println("Descrição: " + produto.getDescricao());
             System.out.println("Fornecedor: " + produto.getFornecedor());
-            System.out.println("Preço: " + produto.getPreco());
+            System.out.println("Preço: R$ " + produto.getPreco());
             System.out.println("Estoque: " + produto.getEstoque());
         }
     }
