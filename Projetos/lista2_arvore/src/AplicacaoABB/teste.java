@@ -15,10 +15,6 @@ public class teste {
         arvore.insert2temp(5);
         arvore.insert2temp(8);
         arvore.insert2temp(3);
-        arvore.insert2temp(15);
-        arvore.insert2temp(13);
-        arvore.insert2temp(17);
-        arvore.insert2temp(18);
 
         System.out.println("-");
         System.out.println(arvore.contarNaoTerminaisNaoRecursiva());
