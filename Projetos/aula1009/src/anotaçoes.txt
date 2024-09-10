@@ -1,0 +1,7 @@
+Desce procurando inserção
+Sobe ajustando fator de balanceamento, até chegar na raiz
+ou encontrar nó desbalanceado
+
+Na inserção, apenas uma rotação balanceia
+
+Na remoção não temos essa garantia
